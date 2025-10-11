@@ -95,3 +95,4 @@ if ($suspectAppDetected) {
 
 Write-Host "`n------------------------------------------`n" -ForegroundColor DarkGray
 
+
