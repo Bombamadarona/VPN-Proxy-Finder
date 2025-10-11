@@ -72,25 +72,26 @@ if ((netsh winhttp show proxy) -match 'Proxy Server\s*:\s*(?!Direct access)') {
 $vpnDetected = ($knownVpnProcs.Count -gt 0) -or ($vpnAdapters.Count -gt 0) -or $routeVpn
 $suspectAppDetected = ($suspectProcs.Count -gt $knownVpnProcs.Count)  # App VPN/proxy sospette ma non note
 
-Write-Host "`n═══════════════════════════════════════════" -ForegroundColor DarkGray
-Write-Host "    🔎 RILEVAMENTO STATO RETE: VPN / PROXY"
-Write-Host "═══════════════════════════════════════════`n" -ForegroundColor DarkGray
+Write-Host "`n------------------------------------------" -ForegroundColor DarkGray
+Write-Host "     RILEVAMENTO STATO RETE: VPN / PROXY"
+Write-Host "------------------------------------------`n" -ForegroundColor DarkGray
 
 if ($vpnDetected -and $proxyDetected) {
-    Write-Host "⚠️  VPN e Proxy attivi" -ForegroundColor Yellow
+    Write-Host "-  VPN e Proxy attivi" -ForegroundColor Yellow
 } elseif ($vpnDetected) {
-    Write-Host "🔒 VPN attiva" -ForegroundColor Cyan
+    Write-Host "- VPN attiva" -ForegroundColor Cyan
 } elseif ($proxyDetected) {
-    Write-Host "🌐 Proxy attivo" -ForegroundColor Magenta
+    Write-Host "- Proxy attivo" -ForegroundColor Magenta
 } else {
-    Write-Host "✅ Nessuna connessione VPN o Proxy rilevata" -ForegroundColor Green
+    Write-Host "- Nessuna connessione VPN o Proxy rilevata" -ForegroundColor Green
 }
 
 if ($suspectAppDetected) {
-    Write-Host "`n⚠️  Programmi sospetti rilevati (potenziali VPN/Proxy):" -ForegroundColor DarkYellow
+    Write-Host "`n Programmi sospetti rilevati (potenziali VPN/Proxy):" -ForegroundColor DarkYellow
     $suspectProcs | Sort-Object Name | Select-Object -ExpandProperty Name | Get-Unique | ForEach-Object {
         Write-Host "   → $_" -ForegroundColor DarkYellow
     }
 }
 
-Write-Host "`n═══════════════════════════════════════════`n" -ForegroundColor DarkGray
+Write-Host "`n------------------------------------------`n" -ForegroundColor DarkGray
+
