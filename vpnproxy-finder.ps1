@@ -89,8 +89,9 @@ if ($vpnDetected -and $proxyDetected) {
 if ($suspectAppDetected) {
     Write-Host "`n Programmi sospetti rilevati (potenziali VPN/Proxy):" -ForegroundColor DarkYellow
     $suspectProcs | Sort-Object Name | Select-Object -ExpandProperty Name | Get-Unique | ForEach-Object {
-        Write-Host "    $_" -ForegroundColor DarkYellow
+        Write-Host "-    $_" -ForegroundColor DarkYellow
     }
 }
+
 
 Write-Host "`n------------------------------------------`n" -ForegroundColor DarkGray
