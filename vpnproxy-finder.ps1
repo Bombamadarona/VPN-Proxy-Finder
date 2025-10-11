@@ -73,7 +73,7 @@ $vpnDetected = ($knownVpnProcs.Count -gt 0) -or ($vpnAdapters.Count -gt 0) -or $
 $suspectAppDetected = ($suspectProcs.Count -gt $knownVpnProcs.Count)  # App VPN/proxy sospette ma non note
 
 Write-Host "`n------------------------------------------" -ForegroundColor DarkGray
-Write-Host "     RILEVAMENTO STATO RETE: VPN / PROXY"
+Write-Host "     RILEVAMENTO RETE: VPN / PROXY"
 Write-Host "------------------------------------------`n" -ForegroundColor DarkGray
 
 if ($vpnDetected -and $proxyDetected) {
@@ -95,3 +95,4 @@ if ($suspectAppDetected) {
 
 
 Write-Host "`n------------------------------------------`n" -ForegroundColor DarkGray
+
